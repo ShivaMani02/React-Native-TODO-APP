@@ -1,10 +1,15 @@
-import {app} from './app.js' ;
-import {config} from 'dotenv' ;
+import { config } from 'dotenv';
+import { app } from './app.js';
+
+import connectDB from './config/database.js';
 
 config({
-    path : './config/config.env'
-})
+  path: './config/config.env',
+});
 
-app.listen(process.env.PORT , ()=>{
-    console.log("Server is working on Port " + process.env.PORT );
-})
+connectDB();
+
+app.listen(process.env.PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Server is working on Port ${process.env.PORT}`);
+});
